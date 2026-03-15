@@ -1,0 +1,218 @@
+{
+  "version": "2.0.0",
+  "total_algorithms": 113,
+  "categories": {
+    "sorting": {
+      "label": "Sorting",
+      "description": "Comparison and non-comparison sorting algorithms",
+      "visualizer": "bars",
+      "route_prefix": "/sorting",
+      "method": "GET",
+      "algorithms": [
+        {"id": "bubble",    "name": "Bubble Sort",     "time": "O(n²)",      "space": "O(1)",     "stable": true,  "description": "Repeatedly swaps adjacent elements if they are in the wrong order."},
+        {"id": "selection", "name": "Selection Sort",   "time": "O(n²)",      "space": "O(1)",     "stable": false, "description": "Finds the minimum element and places it at the beginning."},
+        {"id": "insertion", "name": "Insertion Sort",   "time": "O(n²)",      "space": "O(1)",     "stable": true,  "description": "Builds the sorted array one item at a time."},
+        {"id": "merge",     "name": "Merge Sort",       "time": "O(n log n)", "space": "O(n)",     "stable": true,  "description": "Divides array in half, sorts each half, then merges them."},
+        {"id": "quick",     "name": "Quick Sort",       "time": "O(n log n)", "space": "O(log n)", "stable": false, "description": "Picks a pivot, partitions around it, recurse."},
+        {"id": "heap",      "name": "Heap Sort",        "time": "O(n log n)", "space": "O(1)",     "stable": false, "description": "Builds a max heap and repeatedly extracts the maximum."},
+        {"id": "shell",     "name": "Shell Sort",       "time": "O(n log²n)","space": "O(1)",     "stable": false, "description": "Insertion sort with diminishing gap sequences."},
+        {"id": "counting",  "name": "Counting Sort",    "time": "O(n+k)",    "space": "O(k)",     "stable": true,  "description": "Counts occurrences of each value."},
+        {"id": "radix",     "name": "Radix Sort",       "time": "O(d·n)",    "space": "O(n+k)",   "stable": true,  "description": "Sorts digit by digit from LSD to MSD."},
+        {"id": "bucket",    "name": "Bucket Sort",      "time": "O(n+k)",    "space": "O(n)",     "stable": true,  "description": "Distributes elements into buckets, sorts each."},
+        {"id": "tim",       "name": "Tim Sort",         "time": "O(n log n)", "space": "O(n)",    "stable": true,  "description": "Hybrid merge+insertion sort used in Python/Java."},
+        {"id": "cocktail",  "name": "Cocktail Sort",    "time": "O(n²)",     "space": "O(1)",     "stable": true,  "description": "Bidirectional bubble sort."},
+        {"id": "comb",      "name": "Comb Sort",        "time": "O(n²)",     "space": "O(1)",     "stable": false, "description": "Bubble sort with shrinking gap."},
+        {"id": "gnome",     "name": "Gnome Sort",       "time": "O(n²)",     "space": "O(1)",     "stable": true,  "description": "Insertion sort by swapping backward."},
+        {"id": "bitonic",   "name": "Bitonic Sort",     "time": "O(n log²n)","space": "O(1)",     "stable": false, "description": "Parallel sorting using bitonic sequences."}
+      ]
+    },
+    "searching": {
+      "label": "Searching",
+      "description": "Array search algorithms",
+      "visualizer": "bars",
+      "route_prefix": "/searching",
+      "method": "GET",
+      "algorithms": [
+        {"id": "linear",        "name": "Linear Search",        "time": "O(n)",         "space": "O(1)", "description": "Checks each element sequentially."},
+        {"id": "binary",        "name": "Binary Search",        "time": "O(log n)",     "space": "O(1)", "description": "Divides sorted array in half repeatedly."},
+        {"id": "jump",          "name": "Jump Search",          "time": "O(√n)",        "space": "O(1)", "description": "Jumps ahead by fixed blocks, then linear scan."},
+        {"id": "interpolation", "name": "Interpolation Search", "time": "O(log log n)", "space": "O(1)", "description": "Estimates position from value distribution."},
+        {"id": "exponential",   "name": "Exponential Search",   "time": "O(log n)",     "space": "O(1)", "description": "Finds range by doubling, then binary search."},
+        {"id": "fibonacci",     "name": "Fibonacci Search",     "time": "O(log n)",     "space": "O(1)", "description": "Divides using Fibonacci numbers."},
+        {"id": "ternary",       "name": "Ternary Search",       "time": "O(log₃n)",    "space": "O(1)", "description": "Divides sorted array into three parts."}
+      ]
+    },
+    "graph": {
+      "label": "Graph",
+      "description": "Traversal, shortest path, MST, connectivity, and flow algorithms",
+      "visualizer": "graph",
+      "route_prefix": "/graph",
+      "method": "POST",
+      "algorithms": [
+        {"id": "bfs",             "name": "BFS",                     "time": "O(V+E)",       "space": "O(V)",   "description": "Explore all neighbors at current depth first."},
+        {"id": "dfs",             "name": "DFS",                     "time": "O(V+E)",       "space": "O(V)",   "description": "Explore as far as possible along each branch."},
+        {"id": "dijkstra",        "name": "Dijkstra",                "time": "O(E log V)",   "space": "O(V)",   "description": "Shortest path with non-negative weights."},
+        {"id": "bellman_ford",    "name": "Bellman-Ford",            "time": "O(V·E)",       "space": "O(V)",   "description": "Shortest paths; handles negative weights."},
+        {"id": "floyd_warshall",  "name": "Floyd-Warshall",          "time": "O(V³)",        "space": "O(V²)",  "description": "All-pairs shortest path via DP."},
+        {"id": "a_star",          "name": "A* Search",               "time": "O(E)",         "space": "O(V)",   "description": "Heuristic-guided shortest path."},
+        {"id": "kruskal",         "name": "Kruskal (MST)",           "time": "O(E log E)",   "space": "O(V)",   "description": "Greedy MST by adding cheapest edges."},
+        {"id": "prim",            "name": "Prim (MST)",              "time": "O(E log V)",   "space": "O(V)",   "description": "Greedy MST growing from a vertex."},
+        {"id": "boruvka",         "name": "Borůvka (MST)",           "time": "O(E log V)",   "space": "O(V)",   "description": "MST by connecting components with cheapest edges."},
+        {"id": "topological",     "name": "Topological Sort",        "time": "O(V+E)",       "space": "O(V)",   "description": "Linear ordering of DAG vertices."},
+        {"id": "kosaraju",        "name": "Kosaraju SCC",            "time": "O(V+E)",       "space": "O(V)",   "description": "Strongly connected components via two DFS passes."},
+        {"id": "tarjan",          "name": "Tarjan SCC",              "time": "O(V+E)",       "space": "O(V)",   "description": "SCCs in a single DFS pass."},
+        {"id": "bridges",         "name": "Bridges",                 "time": "O(V+E)",       "space": "O(V)",   "description": "Edges whose removal disconnects the graph."},
+        {"id": "articulation",    "name": "Articulation Points",     "time": "O(V+E)",       "space": "O(V)",   "description": "Vertices whose removal disconnects the graph."},
+        {"id": "euler_path",      "name": "Euler Path / Circuit",    "time": "O(V+E)",       "space": "O(V+E)", "description": "Path visiting every edge exactly once."},
+        {"id": "ford_fulkerson",  "name": "Ford-Fulkerson",          "time": "O(V·E²)",      "space": "O(V²)",  "description": "Maximum flow via augmenting paths (DFS)."},
+        {"id": "edmonds_karp",    "name": "Edmonds-Karp",            "time": "O(V·E²)",      "space": "O(V²)",  "description": "Maximum flow via BFS augmenting paths."},
+        {"id": "union_find",      "name": "Union-Find / DSU",        "time": "O(α(n))",      "space": "O(n)",   "description": "Disjoint set union with path compression."},
+        {"id": "kahns",           "name": "Kahn's Topological Sort", "time": "O(V+E)",       "space": "O(V)",   "description": "BFS-based topological sort using in-degree."},
+        {"id": "cycle_directed",  "name": "Cycle Detection (Directed)",   "time": "O(V+E)", "space": "O(V)", "description": "Detect cycles via DFS coloring."},
+        {"id": "cycle_undirected","name": "Cycle Detection (Undirected)", "time": "O(V+E)", "space": "O(V)", "description": "Detect cycles via DFS parent tracking."},
+        {"id": "johnson",         "name": "Johnson's Algorithm",     "time": "O(V²logV+VE)", "space": "O(V²)",  "description": "All-pairs shortest paths for sparse graphs."}
+      ]
+    },
+    "pathfinding": {
+      "label": "Pathfinding",
+      "description": "Grid-based pathfinding and maze solving",
+      "visualizer": "grid",
+      "route_prefix": "/pathfinding",
+      "method": "POST",
+      "algorithms": [
+        {"id": "a_star_grid",   "name": "A* (Grid)",          "time": "O(E)",    "space": "O(V)", "description": "Optimal pathfinding using heuristic on a grid."},
+        {"id": "dijkstra_grid", "name": "Dijkstra (Grid)",    "time": "O(V²)",   "space": "O(V)", "description": "Shortest path on weighted grid."},
+        {"id": "bfs_grid",      "name": "BFS (Grid)",         "time": "O(V+E)",  "space": "O(V)", "description": "Shortest path on unweighted grid."},
+        {"id": "dfs_maze",      "name": "DFS (Maze)",         "time": "O(V+E)",  "space": "O(V)", "description": "Maze exploration using depth-first."},
+        {"id": "greedy_best",   "name": "Greedy Best-First",  "time": "O(E)",    "space": "O(V)", "description": "Always expands node closest to goal."},
+        {"id": "jump_point",    "name": "Jump Point Search",  "time": "O(E)",    "space": "O(V)", "description": "A* optimization skipping intermediate nodes."}
+      ]
+    },
+    "tree": {
+      "label": "Tree",
+      "description": "Binary trees, balanced trees, and advanced tree structures",
+      "visualizer": "tree",
+      "route_prefix": "/tree",
+      "method": "POST",
+      "algorithms": [
+        {"id": "inorder",    "name": "Inorder Traversal",        "time": "O(n)", "space": "O(h)", "description": "Left → Root → Right."},
+        {"id": "preorder",   "name": "Preorder Traversal",       "time": "O(n)", "space": "O(h)", "description": "Root → Left → Right."},
+        {"id": "postorder",  "name": "Postorder Traversal",      "time": "O(n)", "space": "O(h)", "description": "Left → Right → Root."},
+        {"id": "levelorder", "name": "Level-Order Traversal",    "time": "O(n)", "space": "O(w)", "description": "BFS level by level."},
+        {"id": "bst",        "name": "BST Operations",           "time": "O(h)", "space": "O(h)", "description": "Insert, search, delete in BST."},
+        {"id": "avl",        "name": "AVL Tree",                 "time": "O(log n)", "space": "O(n)", "description": "Self-balancing BST with rotations."},
+        {"id": "red_black",  "name": "Red-Black Tree",           "time": "O(log n)", "space": "O(n)", "description": "Self-balancing BST with color rules."},
+        {"id": "segment",    "name": "Segment Tree",             "time": "O(log n)", "space": "O(n)", "description": "Range queries and point updates."},
+        {"id": "fenwick",    "name": "Fenwick Tree (BIT)",       "time": "O(log n)", "space": "O(n)", "description": "Binary Indexed Tree for prefix sums."},
+        {"id": "trie",       "name": "Trie",                     "time": "O(m)",     "space": "O(m·n)", "description": "Prefix tree for string operations."},
+        {"id": "lca",        "name": "Lowest Common Ancestor",   "time": "O(h)",     "space": "O(1)",   "description": "Find LCA of two nodes in BST."},
+        {"id": "height",     "name": "Tree Height",              "time": "O(n)",     "space": "O(h)",   "description": "Compute height of a binary tree."},
+        {"id": "diameter",   "name": "Tree Diameter",            "time": "O(n)",     "space": "O(h)",   "description": "Longest path between any two nodes."}
+      ]
+    },
+    "dp": {
+      "label": "Dynamic Programming",
+      "description": "Optimization via overlapping subproblems and optimal substructure",
+      "visualizer": "table",
+      "route_prefix": "/dp",
+      "method": "POST",
+      "algorithms": [
+        {"id": "fibonacci",         "name": "Fibonacci DP",                    "time": "O(n)",    "space": "O(n)",   "description": "Fibonacci using DP table."},
+        {"id": "knapsack",          "name": "Knapsack (0/1)",                  "time": "O(n·W)",  "space": "O(n·W)", "description": "Maximize value with weight constraint."},
+        {"id": "lcs",               "name": "Longest Common Subsequence",      "time": "O(m·n)",  "space": "O(m·n)", "description": "Longest subsequence in both strings."},
+        {"id": "lis",               "name": "Longest Increasing Subsequence",  "time": "O(n²)",   "space": "O(n)",   "description": "Longest strictly increasing subsequence."},
+        {"id": "matrix_chain",      "name": "Matrix Chain Multiplication",     "time": "O(n³)",   "space": "O(n²)",  "description": "Optimal matrix multiplication order."},
+        {"id": "edit_distance",     "name": "Edit Distance",                   "time": "O(m·n)",  "space": "O(m·n)", "description": "Min operations to transform one string to another."},
+        {"id": "coin_change",       "name": "Coin Change",                     "time": "O(n·S)",  "space": "O(S)",   "description": "Minimum coins for a given amount."},
+        {"id": "rod_cutting",       "name": "Rod Cutting",                     "time": "O(n²)",   "space": "O(n)",   "description": "Maximize revenue cutting a rod."},
+        {"id": "palindromic_subseq","name": "Longest Palindromic Subsequence", "time": "O(n²)",   "space": "O(n²)",  "description": "Longest palindromic subsequence."},
+        {"id": "min_path_sum",      "name": "Minimum Path Sum",                "time": "O(m·n)",  "space": "O(m·n)", "description": "Min path sum from top-left to bottom-right."},
+        {"id": "partition_subset",  "name": "Partition Equal Subset Sum",      "time": "O(n·S)",  "space": "O(S)",   "description": "Partition array into two equal-sum subsets."},
+        {"id": "tsp",               "name": "Traveling Salesman (DP)",         "time": "O(n²·2ⁿ)","space": "O(n·2ⁿ)","description": "Shortest tour visiting all cities."}
+      ]
+    },
+    "backtracking": {
+      "label": "Backtracking",
+      "description": "Constraint satisfaction via recursive trial and backtrack",
+      "visualizer": "board",
+      "route_prefix": "/backtracking",
+      "method": "POST",
+      "algorithms": [
+        {"id": "n_queens",       "name": "N-Queens",         "time": "O(n!)",      "space": "O(n²)",  "description": "Place N queens so none attack each other."},
+        {"id": "sudoku",         "name": "Sudoku Solver",    "time": "O(9^m)",     "space": "O(1)",   "description": "Fill 9×9 grid: each row/col/box has 1-9."},
+        {"id": "knights_tour",   "name": "Knight's Tour",    "time": "O(8^n²)",    "space": "O(n²)",  "description": "Knight visits every square exactly once."},
+        {"id": "subset_sum",     "name": "Subset Sum",       "time": "O(2^n)",     "space": "O(n)",   "description": "Find subset summing to target."},
+        {"id": "permutations",   "name": "Permutations",     "time": "O(n!)",      "space": "O(n)",   "description": "Generate all permutations."},
+        {"id": "combinations",   "name": "Combinations",     "time": "O(C(n,k))",  "space": "O(k)",   "description": "Generate all k-combinations."},
+        {"id": "graph_coloring", "name": "Graph Coloring",   "time": "O(m^V)",     "space": "O(V)",   "description": "Color vertices so no adjacent pair shares a color."},
+        {"id": "rat_in_maze",    "name": "Rat in a Maze",    "time": "O(2^n²)",    "space": "O(n²)",  "description": "Find path from top-left to bottom-right."},
+        {"id": "word_search",    "name": "Word Search",      "time": "O(n·m·4^L)", "space": "O(L)",   "description": "Find word in 2D character board."}
+      ]
+    },
+    "string": {
+      "label": "String",
+      "description": "Pattern matching, palindromes, and string data structures",
+      "visualizer": "table",
+      "route_prefix": "/string",
+      "method": "GET",
+      "algorithms": [
+        {"id": "kmp",                "name": "KMP Search",            "time": "O(n+m)",      "space": "O(m)",  "description": "Pattern matching using prefix function."},
+        {"id": "rabin_karp",         "name": "Rabin-Karp",            "time": "O(n+m)",      "space": "O(1)",  "description": "Pattern matching using rolling hash."},
+        {"id": "boyer_moore",        "name": "Boyer-Moore",           "time": "O(n/m)",      "space": "O(m)",  "description": "Bad character + good suffix rules."},
+        {"id": "z_algorithm",        "name": "Z Algorithm",           "time": "O(n)",        "space": "O(n)",  "description": "Z-array for pattern matching."},
+        {"id": "longest_palindrome", "name": "Longest Palindrome",    "time": "O(n²)",       "space": "O(n²)", "description": "Longest palindromic substring (DP)."},
+        {"id": "suffix_array",       "name": "Suffix Array",          "time": "O(n log n)",  "space": "O(n)",  "description": "Sorted array of all suffixes."},
+        {"id": "manacher",           "name": "Manacher's Algorithm",  "time": "O(n)",        "space": "O(n)",  "description": "All palindromic substrings in linear time."},
+        {"id": "aho_corasick",       "name": "Aho-Corasick",          "time": "O(n+m+z)",    "space": "O(m)",  "description": "Multi-pattern matching automaton."},
+        {"id": "suffix_tree",        "name": "Suffix Tree",           "time": "O(n)",        "space": "O(n)",  "description": "Tree of all suffixes."}
+      ]
+    },
+    "math": {
+      "label": "Math",
+      "description": "Number theory, primality, and modular arithmetic",
+      "visualizer": "table",
+      "route_prefix": "/math",
+      "method": "POST",
+      "algorithms": [
+        {"id": "gcd",            "name": "Euclidean GCD",             "time": "O(log min)",     "space": "O(1)",       "description": "Greatest common divisor."},
+        {"id": "extended_gcd",   "name": "Extended Euclidean",        "time": "O(log min)",     "space": "O(log min)", "description": "GCD + Bézout coefficients."},
+        {"id": "sieve",          "name": "Sieve of Eratosthenes",     "time": "O(n log log n)", "space": "O(n)",       "description": "Find all primes up to n."},
+        {"id": "fast_pow",       "name": "Fast Exponentiation",       "time": "O(log n)",       "space": "O(1)",       "description": "Binary exponentiation."},
+        {"id": "mod_inverse",    "name": "Modular Inverse",           "time": "O(log m)",       "space": "O(1)",       "description": "Multiplicative inverse mod m."},
+        {"id": "prime_factor",   "name": "Prime Factorization",       "time": "O(√n)",          "space": "O(log n)",   "description": "Decompose into prime factors."},
+        {"id": "crt",            "name": "Chinese Remainder Theorem", "time": "O(n log n)",     "space": "O(n)",       "description": "Solve simultaneous congruences."},
+        {"id": "euler_totient",  "name": "Euler's Totient φ(n)",      "time": "O(√n)",          "space": "O(1)",       "description": "Count integers coprime to n."},
+        {"id": "miller_rabin",   "name": "Miller-Rabin Primality",    "time": "O(k·log²n)",     "space": "O(1)",       "description": "Probabilistic primality test."}
+      ]
+    },
+    "geometry": {
+      "label": "Computational Geometry",
+      "description": "Convex hulls, intersections, and spatial algorithms",
+      "visualizer": "graph",
+      "route_prefix": "/geometry",
+      "method": "POST",
+      "algorithms": [
+        {"id": "convex_hull_graham", "name": "Convex Hull (Graham Scan)",  "time": "O(n log n)", "space": "O(n)", "description": "Convex hull using polar angle sorting."},
+        {"id": "convex_hull_jarvis", "name": "Convex Hull (Jarvis March)", "time": "O(nh)",      "space": "O(n)", "description": "Convex hull via gift wrapping."},
+        {"id": "closest_pair",       "name": "Closest Pair of Points",     "time": "O(n log n)", "space": "O(n)", "description": "Find two closest points (divide & conquer)."},
+        {"id": "line_intersection",  "name": "Line Segment Intersection",  "time": "O(n²)",      "space": "O(1)", "description": "Check all segment pairs for intersections."},
+        {"id": "sweep_line",         "name": "Sweep Line Algorithm",       "time": "O((n+k)logn)","space": "O(n)","description": "Detect intersections using sweep line."}
+      ]
+    },
+    "datastructure": {
+      "label": "Data Structures",
+      "description": "Core data structure operations and collision handling",
+      "visualizer": "bars",
+      "route_prefix": "/datastructure",
+      "method": "POST",
+      "algorithms": [
+        {"id": "heap_ops",       "name": "Heap Operations",      "time": "O(log n)", "space": "O(n)", "description": "Insert, extract-min, sift-up, sift-down."},
+        {"id": "linkedlist_ops", "name": "Linked List Ops",      "time": "O(n)",     "space": "O(n)", "description": "Insert, delete, reverse, Floyd's cycle detection."},
+        {"id": "hashtable_ops",  "name": "Hash Table Ops",       "time": "O(1) avg", "space": "O(n)", "description": "Chaining and open addressing with collisions."},
+        {"id": "array_ops",      "name": "Array Operations",     "time": "O(n)",     "space": "O(n)", "description": "Insert, delete, rotate."},
+        {"id": "stack_ops",      "name": "Stack Operations",     "time": "O(1)",     "space": "O(n)", "description": "Push, pop, peek (LIFO)."},
+        {"id": "queue_ops",      "name": "Queue Operations",     "time": "O(1)",     "space": "O(n)", "description": "Enqueue, dequeue (FIFO)."}
+      ]
+    }
+  }
+}
