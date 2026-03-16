@@ -1,0 +1,159 @@
+Algorithm-Vision
+│   .gitignore
+│   build_exe.py
+│   README.md
+│   requirements.txt
+│   run.py
+│   tree.txt
+│
+├───backend
+│   │   app.py
+│   │
+│   ├───algorithms
+│   │   │   __init__.py
+│   │   │
+│   │   ├───backtracking
+│   │   │       backtracking_algorithms.py
+│   │   │       fix_combinations.py
+│   │   │       missing_backtracking.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───datastructure
+│   │   │       ds_operations.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───dp
+│   │   │       dp_algorithms.py
+│   │   │       missing_dp.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───geometry
+│   │   │       advanced_geometry.py
+│   │   │       geometry_algorithms.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───graph
+│   │   │       advanced.py
+│   │   │       a_star.py
+│   │   │       bellman_ford.py
+│   │   │       bfs.py
+│   │   │       boruvka.py
+│   │   │       dfs.py
+│   │   │       dijkstra.py
+│   │   │       euler.py
+│   │   │       floyd_warshall.py
+│   │   │       geometry.py
+│   │   │       kruskal.py
+│   │   │       max_flow.py
+│   │   │       missing_graph.py
+│   │   │       prim.py
+│   │   │       topological_sort.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───math
+│   │   │       crt.py
+│   │   │       math_algorithms.py
+│   │   │       missing_math.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───pathfinding
+│   │   │       jump_point_search.py
+│   │   │       pathfinding_algorithms.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───searching
+│   │   │       binary_search.py
+│   │   │       exponential_search.py
+│   │   │       fibonacci_search.py
+│   │   │       interpolation_search.py
+│   │   │       jump_search.py
+│   │   │       linear_search.py
+│   │   │       ternary_search.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───sorting
+│   │   │       bitonic_sort.py
+│   │   │       bubble_sort.py
+│   │   │       bucket_sort.py
+│   │   │       cocktail_sort.py
+│   │   │       comb_sort.py
+│   │   │       counting_sort.py
+│   │   │       gnome_sort.py
+│   │   │       heap_sort.py
+│   │   │       insertion_sort.py
+│   │   │       merge_sort.py
+│   │   │       quick_sort.py
+│   │   │       radix_sort.py
+│   │   │       selection_sort.py
+│   │   │       shell_sort.py
+│   │   │       tim_sort.py
+│   │   │       __init__.py
+│   │   │
+│   │   ├───string
+│   │   │       missing_string.py
+│   │   │       string_algorithms.py
+│   │   │       suffix_array.py
+│   │   │       __init__.py
+│   │   │
+│   │   └───trees
+│   │           advanced_trees.py
+│   │           missing_trees.py
+│   │           tree_algorithms.py
+│   │           __init__.py
+│   │
+│   ├───models
+│   │       graph.py
+│   │       step.py
+│   │       __init__.py
+│   │
+│   ├───routes
+│   │       geometry_routes.py
+│   │       graph_routes.py
+│   │       sorting_routes.py
+│   │       tree_routes.py
+│   │       __init__.py
+│   │
+│   ├───services
+│   │       algorithm_runner.py
+│   │       step_generator.py
+│   │       __init__.py
+│   │
+│   └───utils
+│           generators.py
+│           validators.py
+│           __init__.py
+│
+├───frontend
+│   │   index.html
+│   │
+│   ├───css
+│   │       animations.css
+│   │       layout.css
+│   │       style.css
+│   │
+│   └───js
+│       │   main.js
+│       │
+│       ├───algorithms
+│       │       graphUI.js
+│       │       sortingUI.js
+│       │       treeUI.js
+│       │
+│       ├───canvas
+│       │       canvasRenderer.js
+│       │       graphRenderer.js
+│       │       gridRenderer.js
+│       │
+│       ├───utils
+│       │       api.js
+│       │       helpers.js
+│       │
+│       └───visualizers
+│               dpVisualizer.js
+│               graphVisualizer.js
+│               sortingVisualizer.js
+│               treeVisualizer.js
+│
+├───screenshots
+└───shared
+        algorithm_registry.json
