@@ -2,7 +2,7 @@
 
 **113 algorithms. 11 categories. One visualizer.**
 
-AlgoVision is an interactive algorithm visualization platform built with Python and vanilla JavaScript. Every algorithm runs step-by-step with colored bars, graph nodes, DP tables, and board grids — so you can actually *see* how algorithms think.
+AlgoVision is an interactive algorithm visualization platform built with Python and vanilla JavaScript. Every algorithm runs step-by-step with colored bars, graph nodes, DP tables, and board grids — with sound.
 
 ![AlgoVision Demo](screenshots/01-hero-overview.png)
 
@@ -28,279 +28,259 @@ The app loads with sorting selected, random bars generated, ready to go. Pick an
 
 ---
 
-## Sorting — 15 Algorithms
+## Sound
 
-The sorting visualizer renders array elements as colored bars. Each step highlights what the algorithm is doing right now:
+Click the speaker icon in the top-right corner to enable sound.
 
-- **Red** = comparing two elements
-- **Orange** = swapping positions
-- **Teal** = element is in its final sorted position
-- **Blue** = active element (pivot, current insertion point)
+Every bar's height maps to a pitch on a **pentatonic scale** (C-D-E-G-A across 3 octaves). Short bars play low notes, tall bars play high notes. As the algorithm sorts the array, the tones naturally sweep from low to high — like the classic sorting sound videos on YouTube.
+
+- Soft sine waves — no harsh buzzing
+- Pentatonic scale — impossible to sound bad
+- Stereo panning — left bars play in the left speaker, right bars in the right
+- Completion sweep — a harp-like glissando plays through the sorted array when done
+- Works for all categories — sorting, searching, graph traversal, DP tables, pathfinding
+
+Press `M` to toggle mute.
+
+---
+
+## Features
+
+- **113 algorithms** covering the full CS curriculum
+- **Sorting sounds** — pentatonic pitch mapping, stereo panning, completion arpeggio
+- **Step-by-step playback** with Play / Pause / Step / Reset controls
+- **Speed & size sliders** to control animation speed and data size
+- **Syntax-highlighted pseudocode** with active line tracking
+- **Live metrics** — comparisons, swaps, steps counter
+- **Algorithm search** — find any algorithm instantly
+- **Grouped sidebar** — algorithms organized by subcategory
+- **Complexity display** — time and space complexity for every algorithm
+- **Custom input** — enter your own arrays, targets, graphs
+- **Quit button** — cleanly stops the server from the browser
+- **Standalone EXE** — build with Cython + PyArmor + PyInstaller
+
+---
+
+## Screenshots
+
+### Overview
+
+![Full App](screenshots/01-hero-overview.png)
+
+The three-panel layout: algorithm sidebar on the left, visualization canvas in the center, code panel on the right. Metrics bar shows real-time comparisons, swaps, and steps.
+
+![Landing Screen](screenshots/02-landing-sorting-default.png)
+
+Fresh load — random bars generated, algorithm info panel showing time/space complexity, pseudocode ready in the code panel.
+
+### Sorting Algorithms
+
+15 sorting algorithms with colored semantic bars.
 
 ![Bubble Sort — comparing two elements](screenshots/03-sorting-bubble-compare.png)
 
-Bubble Sort walks through the array repeatedly, comparing adjacent pairs. Red bars show the current comparison. When they're out of order, they turn orange and swap.
+Red bars show the current comparison. When they're out of order, they turn orange and swap.
 
 ![Quick Sort — pivot partitioning](screenshots/04-sorting-quick-pivot.png)
 
-Quick Sort picks a pivot (blue), then partitions everything around it. You can see elements being compared against the pivot and swapped into place.
+Blue pivot bar with orange swaps during partitioning.
 
 ![Merge Sort — merging two halves](screenshots/05-sorting-merge-merging.png)
 
-Merge Sort splits the array recursively, then merges sorted halves back together. The blue sections show which subarrays are being merged.
-
-The full list: Bubble, Selection, Insertion, Merge, Quick, Heap, Shell, Counting, Radix, Bucket, Tim, Cocktail, Comb, Gnome, Bitonic.
+Blue active sections show which subarrays are being merged together.
 
 ![Heap Sort — sift down operation](screenshots/06-sorting-heap-sift.png)
 
-Heap Sort builds a max-heap then repeatedly extracts the maximum. You can watch the sift-down operation comparing parent and child nodes.
+Compare and swap bars colored during the heap sift-down operation.
 
 ![Radix Sort — digit pass](screenshots/07-sorting-radix-pass.png)
 
-Non-comparison sorts like Radix work differently — they distribute elements by digit. Each pass rearranges based on the current digit position.
+Non-comparison sort — bars rearrange by digit position each pass.
 
 ![Sorting complete — all bars teal](screenshots/08-sorting-complete.png)
 
-When the algorithm finishes, every bar turns teal. The metrics bar shows total comparisons, swaps, and steps.
+All bars turn teal when sorted. The completion sound plays an ascending sweep through the array.
 
----
+### Searching Algorithms
 
-## Searching — 7 Algorithms
-
-Searching mode shows a sorted array with visual markers for the algorithm's search strategy:
-
-- **Coral** = current probe position
-- **Light teal** = already checked and eliminated
-- **Bright green** = target found
-- **Blue dashed brackets** = active search range `[lo..hi]`
-- **Dimmed grey** = eliminated from search
+7 searching algorithms with range brackets and pointer labels.
 
 ![Binary Search — range brackets narrowing](screenshots/09-searching-binary-brackets.png)
 
-Binary Search divides the range in half each step. The blue brackets show `[lo..hi]`, the coral bar is `mid`, and grey bars are eliminated. Pointer labels (`low`, `mid`, `high`) appear below the bars.
+Blue dashed brackets show the active search range. Coral bar is the current probe. Grey bars are eliminated. Pointer labels show `low`, `mid`, `high` below the bars.
 
 ![Jump Search — block scanning](screenshots/10-searching-jump-blocks.png)
 
-Jump Search leaps forward in fixed blocks, then scans linearly when it overshoots. You can see the block boundaries and the linear scan phase.
+Block boundaries highlighted during the jump phase, then linear scan within the block.
 
 ![Interpolation Search — estimated probe](screenshots/11-searching-interpolation.png)
 
-Interpolation Search estimates where the target should be based on value distribution, not just the midpoint. The probe position shifts proportionally.
+Probe position shifts proportionally based on value distribution, not just the midpoint.
 
-Also includes: Linear, Exponential, Fibonacci, and Ternary search.
+### Graph Algorithms
 
----
-
-## Graph — 22 Algorithms
-
-The graph visualizer renders nodes as circles and edges as lines. Colors show algorithm state:
-
-- **Coral** = current node being processed
-- **Purple** = already visited
-- **Blue** = in the frontier/queue
-- **Cyan** = shortest path or result
-- **Green edges** = MST or selected edges
+22 graph algorithms rendered as nodes and edges with color-coded states.
 
 ![BFS — wave spreading through graph](screenshots/12-graph-bfs-traversal.png)
 
-BFS explores all neighbors at the current depth before going deeper. You can see the wavefront of blue frontier nodes expanding outward from the source.
+Purple visited nodes, blue frontier, coral current. The wavefront expands outward from the source.
 
 ![Dijkstra — shortest path found](screenshots/13-graph-dijkstra-path.png)
 
-Dijkstra finds the shortest weighted path. When complete, the cyan path lights up from source to destination, with distance labels on each node.
+Cyan path from source to destination with distance labels.
 
 ![Kruskal — MST edges building](screenshots/14-graph-kruskal-mst.png)
 
-Kruskal's MST algorithm sorts edges by weight and adds them if they don't form a cycle. Green edges show the MST being built incrementally.
+Green MST edges added incrementally, skipping edges that would form cycles.
 
 ![Floyd-Warshall — distance matrix table](screenshots/15-graph-floyd-table.png)
 
-Floyd-Warshall computes all-pairs shortest paths using a DP table. The coral cell is the one currently being updated, blue cells are the referenced values.
+All-pairs shortest paths rendered as a DP table with coral current cell and blue referenced values.
 
 ![Topological Sort — node ordering](screenshots/16-graph-topological.png)
 
-Topological Sort processes nodes in dependency order. Nodes light up as they're added to the topological ordering. Works with directed graphs automatically.
+Directed graph with nodes processing in dependency order.
 
 ![Ford-Fulkerson — augmenting path](screenshots/17-graph-ford-fulkerson.png)
 
-Ford-Fulkerson finds maximum flow by repeatedly finding augmenting paths from source to sink. The cyan path shows the current augmenting path being used.
+Maximum flow with cyan augmenting paths from source to sink.
 
-Also includes: DFS, Bellman-Ford, A*, Prim, Borůvka, Kahn's, Kosaraju SCC, Tarjan SCC, Bridges, Articulation Points, Euler Path, Edmonds-Karp, Union-Find, Cycle Detection (both directed and undirected), Johnson's.
+### Pathfinding
 
----
-
-## Pathfinding — 6 Algorithms
-
-The grid visualizer shows a 2D grid with:
-
-- **Green cell** = start position
-- **Red cell** = end position
-- **Dark cells** = walls
-- **Purple** = visited cells
-- **Blue** = frontier (cells about to be explored)
-- **Coral** = current cell
-- **Cyan line** = final path
-
-Every grid is generated with a guaranteed walkable path between start and end.
+6 pathfinding algorithms on a 2D grid with guaranteed walkable paths.
 
 ![A* — solving the grid](screenshots/18-pathfinding-astar-solving.png)
 
-A* uses a heuristic to guide the search toward the goal. You can see how it expands fewer cells than BFS by prioritizing cells closer to the end.
+Purple visited cells, blue frontier ring, coral current. A* expands fewer cells than BFS by using a heuristic.
 
 ![BFS Grid — wave expansion](screenshots/19-pathfinding-bfs-wave.png)
 
-BFS expands uniformly in all directions like a ripple in water. It guarantees the shortest path on unweighted grids.
+Uniform wave expanding in all directions from the start position.
 
 ![Path found — cyan trail](screenshots/20-pathfinding-path-found.png)
 
-When the algorithm reaches the end, it traces back the shortest path in cyan. The visited purple cells show how much of the grid was explored.
+Cyan path traced from green start to red end through the explored area.
 
-Also includes: Dijkstra Grid, DFS Maze, Greedy Best-First, Jump Point Search.
+### Tree Algorithms
 
----
-
-## Tree — 13 Algorithms
-
-Tree algorithms render binary trees with nodes and edges. Colors indicate what the algorithm is doing:
-
-- **Green** = newly inserted node
-- **Coral** = current node being processed
-- **Purple** = already visited
-- **Orange** = nodes involved in a rotation
+13 tree algorithms drawn as circles and edges on canvas.
 
 ![BST — inserting a node](screenshots/21-tree-bst-insert.png)
 
-BST insertion traverses from root, comparing at each level, then places the new node as a leaf. The green node shows where it landed.
+Green node shows where the new value was inserted in the binary search tree.
 
 ![AVL — rotation after imbalance](screenshots/22-tree-avl-rotation.png)
 
-AVL trees self-balance after insertions. When a node becomes unbalanced, the tree performs a rotation. Orange nodes show the rotation participants.
+Orange highlighted nodes involved in a balance rotation.
 
 ![Inorder Traversal — left-root-right](screenshots/23-tree-inorder-traversal.png)
 
-Inorder traversal visits left subtree, then root, then right subtree. The coral node is the current position, purple nodes have been visited. For a BST, this produces sorted output.
+Coral current node, purple visited. For a BST, inorder produces sorted output.
 
-Also includes: Preorder, Postorder, Level-Order, Red-Black Tree, Segment Tree, Fenwick Tree, Trie, LCA, Tree Height, Tree Diameter.
+### Dynamic Programming
 
----
-
-## Dynamic Programming — 12 Algorithms
-
-DP algorithms display a table that fills in cell by cell:
-
-- **Coral cell** = currently being computed
-- **Blue cells** = cells being referenced to compute the current value
-- **Grey cells** = already filled
+12 DP algorithms with animated table filling.
 
 ![Knapsack — table filling](screenshots/24-dp-knapsack-table.png)
 
-The 0/1 Knapsack fills a 2D table where rows are items and columns are capacities. Each cell shows the maximum value achievable. You can see which previous cells contribute to the current computation.
+2D table with coral current cell being computed, blue cells being referenced.
 
 ![LCS — longest common subsequence](screenshots/25-dp-lcs-filling.png)
 
-LCS compares two strings character by character. When characters match, the cell gets a diagonal value +1. The highlighted cells show the comparison being made.
+Character headers on rows and columns, diagonal references highlighted.
 
 ![Edit Distance — transformation cost](screenshots/26-dp-edit-distance.png)
 
-Edit Distance shows the minimum number of insertions, deletions, and substitutions to transform one string into another. The traceback path highlights the actual operations.
+Table showing minimum edit operations with traceback path.
 
-Also includes: Fibonacci, LIS, Matrix Chain, Coin Change, Rod Cutting, Palindromic Subsequence, Min Path Sum, Partition Equal Subset, TSP.
-
----
-
-## Backtracking — 9 Algorithms
-
-Board-based problems render as a grid. Array-based problems show element boxes:
-
-- **Teal** = successfully placed
-- **Coral** = currently trying
-- **Orange** = conflict/backtrack
+### Backtracking, String, Math
 
 ![N-Queens — placing queens](screenshots/27-bt-nqueens-board.png)
 
-N-Queens places queens one row at a time. When a conflict is detected (same column or diagonal), the algorithm backtracks — you can see the coral "trying" cell and teal "placed" queens.
-
-Also includes: Sudoku Solver, Knight's Tour, Subset Sum, Permutations, Combinations, Graph Coloring, Rat in Maze, Word Search.
-
----
-
-## String Matching — 9 Algorithms
-
-String algorithms display a character table showing text and pattern positions:
-
-- **Highlighted cells** = current comparison window
-- **Coral** = position being checked
-- **Green** = match found
+4×4 board with teal placed queens and coral current try position. Conflicts flash orange before backtracking.
 
 ![KMP — prefix-based matching](screenshots/28-string-kmp-matching.png)
 
-KMP uses a precomputed prefix table to skip redundant comparisons. The highlighted window slides across the text, and the current position shows which characters are being compared.
-
-Also includes: Rabin-Karp, Boyer-Moore, Z Algorithm, Longest Palindrome, Suffix Array, Manacher, Aho-Corasick, Suffix Tree.
-
----
-
-## Math — 9 Algorithms
-
-Math algorithms display computation tables showing each step of the calculation:
+Character table with text and pattern rows, highlighted comparison window sliding across.
 
 ![Sieve of Eratosthenes — crossing out composites](screenshots/29-math-sieve-primes.png)
 
-The Sieve highlights the current prime, then crosses out all its multiples. Numbers that survive are prime. The table updates in real-time as each multiple gets eliminated.
+Number table with current prime highlighted, multiples being crossed out.
 
-Also includes: Euclidean GCD, Extended Euclidean, Fast Exponentiation, Modular Inverse, Prime Factorization, Chinese Remainder Theorem, Euler's Totient, Miller-Rabin.
-
----
-
-## The Code Panel
-
-Every algorithm has syntax-highlighted pseudocode on the right panel. The currently executing line highlights as the algorithm runs:
-
-- **Purple** = keywords (`for`, `while`, `if`, `return`)
-- **Amber** = function names
-- **Blue** = numbers
-- **Grey** = comments
+### UI Details
 
 ![Code panel with active line highlighting](screenshots/30-ui-code-panel.png)
 
-The line numbers and active-line marker help you follow exactly which line of pseudocode corresponds to the current visualization step. The description bar at the bottom explains what's happening in plain English.
+Syntax-highlighted pseudocode: purple keywords, amber functions, blue numbers, grey comments. Yellow active line marker tracks the current step. Line numbers on the left.
 
 ---
 
-## Data Structures — 6 Algorithms
+## Algorithms (113)
 
-Data structure operations render as array boxes with pointer labels:
+### Sorting (15)
+Bubble · Selection · Insertion · Merge · Quick · Heap · Shell · Counting · Radix · Bucket · Tim · Cocktail · Comb · Gnome · Bitonic
 
-- Stack shows `top` pointer, push slides in from right, pop removes from top (LIFO)
-- Queue shows `front` and `rear` pointers, enqueue at rear, dequeue from front (FIFO)
-- Heap shows sift-up/sift-down with compare and swap colors
+### Searching (7)
+Linear · Binary · Jump · Interpolation · Exponential · Fibonacci · Ternary
 
-Also includes: Linked List (insert/delete/reverse), Hash Table (chaining/open addressing), Array (insert/delete/rotate).
+### Graph (22)
+BFS · DFS · Dijkstra · Bellman-Ford · Floyd-Warshall · A* · Kruskal · Prim · Borůvka · Topological Sort · Kahn's · Kosaraju SCC · Tarjan SCC · Bridges · Articulation Points · Euler Path · Ford-Fulkerson · Edmonds-Karp · Union-Find · Cycle Detection (Directed) · Cycle Detection (Undirected) · Johnson's
+
+### Pathfinding (6)
+A* Grid · Dijkstra Grid · BFS Grid · DFS Maze · Greedy Best-First · Jump Point Search
+
+### Computational Geometry (5)
+Convex Hull (Graham Scan) · Convex Hull (Jarvis March) · Closest Pair · Line Segment Intersection · Sweep Line
+
+### Tree (13)
+BST · Inorder · Preorder · Postorder · Level-Order · AVL · Red-Black · Segment Tree · Fenwick Tree · Trie · LCA · Height · Diameter
+
+### Dynamic Programming (12)
+Fibonacci · Knapsack · LCS · LIS · Matrix Chain · Edit Distance · Coin Change · Rod Cutting · Palindromic Subsequence · Min Path Sum · Partition Subset · TSP
+
+### Backtracking (9)
+N-Queens · Sudoku · Knight's Tour · Subset Sum · Permutations · Combinations · Graph Coloring · Rat in Maze · Word Search
+
+### String (9)
+KMP · Rabin-Karp · Boyer-Moore · Z Algorithm · Longest Palindrome · Suffix Array · Manacher · Aho-Corasick · Suffix Tree
+
+### Math (9)
+Euclidean GCD · Extended Euclidean · Sieve of Eratosthenes · Fast Exponentiation · Modular Inverse · Prime Factorization · Chinese Remainder Theorem · Euler's Totient · Miller-Rabin
+
+### Data Structures (6)
+Heap · Linked List · Hash Table · Array · Stack (LIFO) · Queue (FIFO)
 
 ---
 
-## Computational Geometry — 5 Algorithms
-
-Geometry algorithms render points as nodes and hull/intersection edges as highlighted lines. Convex Hull (Graham Scan), Convex Hull (Jarvis March), Closest Pair of Points, Line Segment Intersection, Sweep Line.
-
----
-
-## Architecture
+## Project Structure
 
 ```
 algovision/
-├── backend/          Python FastAPI — 113 algorithm implementations
-├── frontend/         Vanilla JS + Canvas — zero dependencies
-├── shared/           Algorithm registry JSON
-├── screenshots/      30 screenshots for this README
-├── run.py            One-click launcher
-├── build_exe.py      Build standalone .exe
+├── backend/
+│   ├── app.py                    # FastAPI main app
+│   ├── routes/                   # API route handlers
+│   ├── algorithms/               # 113 algorithm implementations
+│   └── models/                   # Pydantic models
+├── frontend/
+│   ├── index.html                # Main UI
+│   ├── css/                      # Styles (black/white theme)
+│   └── js/
+│       ├── main.js               # App orchestrator
+│       ├── utils/
+│       │   ├── helpers.js        # Utilities
+│       │   ├── api.js            # Backend API client
+│       │   └── audioEngine.js    # Pentatonic sorting sounds
+│       ├── canvas/               # Canvas, graph, grid renderers
+│       ├── visualizers/          # Sorting, tree, graph, DP visualizers
+│       └── algorithms/           # UI controllers per category
+├── shared/
+│   └── algorithm_registry.json   # Metadata for all 113 algorithms
+├── screenshots/                  # 30 screenshots for this README
+├── run.py                        # One-click launcher
+├── build_exe.py                  # Secure EXE builder (Cython + PyArmor + PyInstaller)
+├── .gitignore
 └── README.md
 ```
-
-**Backend:** Each algorithm returns `[{step, array/table/board/tree, compare, swap, current, description, ...}]`. The frontend consumes this and renders frame by frame.
-
-**Frontend:** Canvas renderer for bars/trees/graphs, HTML tables for DP/string/math, grid divs for pathfinding. No framework — just 12 vanilla JS files.
 
 ---
 
@@ -319,10 +299,19 @@ Full API docs at `http://localhost:8000/docs` (auto-generated by FastAPI).
 ## Build Standalone EXE
 
 ```bash
-python build_exe.py
+python build_exe.py              # Full: Cython + PyArmor + PyInstaller
+python build_exe.py --no-cython  # PyArmor + PyInstaller only
+python build_exe.py --no-armor   # Cython + PyInstaller only
+python build_exe.py --basic      # PyInstaller only (no protection)
 ```
 
-Creates `dist/AlgoVision.exe` (~40MB). Double-click to run — no Python installation needed on the target machine.
+Creates `dist/AlgoVision.exe` — double-click to run, no Python needed.
+
+| Layer | Protection |
+|-------|-----------|
+| Cython | Compiles `.py` → `.pyd` native binaries. Source code is gone. |
+| PyArmor | Encrypts remaining `.py` with AES. Decrypted only in memory. |
+| PyInstaller | Bundles Python + all deps into single `.exe`. |
 
 ---
 
@@ -334,13 +323,14 @@ Creates `dist/AlgoVision.exe` (~40MB). Double-click to run — no Python install
 | `→` | Step Forward |
 | `R` | Reset |
 | `N` | Randomize |
+| `M` | Toggle Sound |
 | `+` / `-` | Speed Up / Slow Down |
 
 ---
 
 ## Tech Stack
 
-Python · FastAPI · Uvicorn · Vanilla JavaScript · Canvas API · HTML/CSS · IBM Plex Sans · JetBrains Mono
+Python · FastAPI · Uvicorn · Vanilla JavaScript · Canvas API · Web Audio API · HTML/CSS · IBM Plex Sans · JetBrains Mono
 
 ---
 

@@ -271,6 +271,7 @@
   function resetMetrics() {
     metrics = { comparisons: 0, swaps: 0, steps: 0 };
     _updateMetricsUI();
+    AudioEngine.resetSequence();
   }
 
   function _updateMetricsUI() {
@@ -688,7 +689,7 @@
     const step = controller.getCurrentStep?.() || {};
     updateStepBar(progress.current, progress.total, step.description || '');
 
-    // Track metrics + log
+    // Track metrics + log + audio
     const currentStepData = controller.steps?.[progress.current - 1];
     if (currentStepData) {
       metrics.steps = progress.current;
@@ -696,6 +697,24 @@
       if (currentStepData.swap) metrics.swaps++;
       _updateMetricsUI();
       _logStep(currentStepData);
+
+      // Play sound for this step
+      if (currentStepData.array) {
+        AudioEngine.setMaxValue(Math.max(...currentStepData.array, 1));
+        AudioEngine.playStep(currentStepData, currentStepData.array.length);
+      } else if (currentStepData.current != null) {
+        // Graph/tree/board — play node tone
+        const total = currentStepData.visited ? currentStepData.visited.length + 5 : 10;
+        const nodeId = Array.isArray(currentStepData.current) ? currentStepData.current[0] : currentStepData.current;
+        AudioEngine.playNode(nodeId, total, currentStepData.path ? 'found' : 'current');
+      } else if (currentStepData.table) {
+        // DP/table — play cell tone
+        if (currentStepData.current && Array.isArray(currentStepData.current)) {
+          const [r, c] = currentStepData.current;
+          const cols = currentStepData.table[0]?.length || 10;
+          AudioEngine.playCell(r, c, cols, 'active');
+        }
+      }
     }
 
     if (hasMore) {
@@ -705,6 +724,12 @@
       stopPlayback();
       addLog('Completed!', 'sorted');
       updateStepBar(progress.total, progress.total, 'Algorithm complete!');
+
+      // Completion fanfare
+      const lastStep = controller.steps?.[progress.total - 1];
+      if (lastStep?.array) {
+        AudioEngine.playComplete(lastStep.array);
+      }
     }
   }
 
@@ -749,6 +774,13 @@
     const progress = controller.getProgress();
     const step = controller.getCurrentStep?.() || {};
     updateStepBar(progress.current, progress.total, step.description || '');
+
+    // Play sound for manual step
+    const sd = controller.steps?.[progress.current - 1];
+    if (sd?.array) {
+      AudioEngine.setMaxValue(Math.max(...sd.array, 1));
+      AudioEngine.playStep(sd, sd.array.length);
+    }
   }
 
   function resetVisualization() {
@@ -2086,6 +2118,19 @@ dequeue(): val = queue[front]; front++; return val`,
       });
     });
 
+    // Sound toggle
+    const soundBtn = document.getElementById('sound-btn');
+    if (soundBtn) {
+      soundBtn.addEventListener('click', () => {
+        const on = AudioEngine.toggle();
+        soundBtn.style.color = on ? '#000' : '#ccc';
+        soundBtn.title = on ? 'Sound ON (click to mute)' : 'Sound OFF (click to enable)';
+        addLog(on ? 'Sound enabled' : 'Sound muted', 'info');
+      });
+      // Start muted — user clicks to enable (required for AudioContext)
+      soundBtn.style.color = '#ccc';
+    }
+
     // Info modal
     els.infoBtn.addEventListener('click', () => {
       els.infoOverlay.style.display = 'flex';
@@ -2168,6 +2213,14 @@ dequeue(): val = queue[front]; front++; return val`,
           els.speedSlider.value = Math.max(1, parseInt(els.speedSlider.value) - 5);
           els.speedValue.textContent = els.speedSlider.value;
           break;
+        case 'm':
+        case 'M': {
+          const on = AudioEngine.toggle();
+          const sb = document.getElementById('sound-btn');
+          if (sb) sb.style.color = on ? '#000' : '#ccc';
+          addLog(on ? 'Sound enabled' : 'Sound muted', 'info');
+          break;
+        }
       }
     });
 
